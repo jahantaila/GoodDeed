@@ -1,0 +1,33 @@
+{% extends 'suppliesbase.html' %}
+{% load static %}
+{% block content %}
+	<div class="row">
+		{% for request in requests %}
+		<div class="col-lg-4">
+			<img class="thumbnail" src="{{request.imageURL}}">
+			<div class="box-element product">
+				<h6><strong>{{request.title}}</strong></h6>
+				<hr>
+				<p>{{request.description}}</p>
+
+				<a href="{% url 'request-detail' request.pk %}" class="btn btn-outline-success"> View</a>
+			
+				<h4 style="display: inline-block; float: right"><strong>Please help!</strong></h4>
+
+			</div>
+		</div>
+
+		
+		
+		
+		{% endfor %}
+	</div>
+  
+
+
+
+
+{% endblock content %}
+
+
+

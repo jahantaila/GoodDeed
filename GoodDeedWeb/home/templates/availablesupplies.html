@@ -1,0 +1,33 @@
+{% extends 'suppliesbase.html' %}
+{% load static %}
+{% block content %}
+	<div class="row">
+		{% for donation in donations %}
+		<div class="col-lg-4">
+			<img class="thumbnail" src="{{donation.imageURL}}">
+			<div class="box-element product">
+				<h6><strong>{{donation.title}}</strong></h6>
+				<hr>
+				<p>{{donation.description}}</p>
+
+				<a href="{% url 'donation-detail' donation.pk %}" class="btn btn-outline-success"> View</a>
+			
+				<h4 style="display: inline-block; float: right"><strong>Free!</strong></h4>
+
+			</div>
+		</div>
+
+		
+		
+		
+		{% endfor %}
+	</div>
+  
+
+
+
+
+{% endblock content %}
+
+
+

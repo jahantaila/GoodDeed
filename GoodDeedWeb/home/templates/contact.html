@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>GoodDeed - Contact</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<link rel="stylesheet" href="{% static 'donatestyles.css' %}">
+
+</head>
+<body>
+
+
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form" method="POST" action="/contact/"   >
+        {% csrf_token %}
+				<span style="font-family: Roboto; font-size: 40px; color: #3598dc; font-weight: bolder; margin-bottom: 3%;" class="contact100-form-title">
+					GoodDeed - Contact
+				</span>
+
+
+
+        <label class="label-input100" for="location">Name*</label>
+				<div class="wrap-input100">
+					<input id="name" class="input100" type="text" name="name" placeholder="Please enter your name" required>
+					<span class="focus-input100"></span>
+				</div>
+      
+
+
+				<label class="label-input100" for="location">Subject*</label>
+				<div class="wrap-input100">
+					<input id="subject" class="input100" type="text" name="subject" placeholder="Subject of your email" required>
+					<span class="focus-input100"></span>
+				</div>
+
+        <label class="label-input100" for="location">Email*</label>
+				<div class="wrap-input100">
+					<input id="email" class="input100" type="text" name="email" placeholder="Please enter your email" required>
+					<span class="focus-input100"></span>
+				</div>
+				
+				
+
+				<label class="label-input100" for="content">Message*</label>
+				<div class="wrap-input100 validate-input" required>
+					<textarea style="resize: none;"  id="content" class="input100" name="content" placeholder="Why are you contacting us today?"  required  ></textarea>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="container-contact100-form-btn">
+					<button class="contact100-form-btn" type="submit"  onclick="showAlert()">
+						<span>
+							Submit
+							<i class="zmdi zmdi-arrow-right m-l-8"></i>
+						</span>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+<script>
+	function showAlert() {
+
+swal({
+  title: "Contact",
+  text: "Thank you for contacting us. You will recive a response soon. ",
+  icon: "success",
+  
+  
+})
+
+  } 
+
+</script>
+
+
+
+</body>
+</html>

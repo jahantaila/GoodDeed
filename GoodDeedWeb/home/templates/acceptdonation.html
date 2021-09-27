@@ -1,0 +1,85 @@
+{% extends 'suppliesbase.html' %}
+{% load static %}
+{% block content %}
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="box-element">
+
+				<a  class="btn btn-outline-dark" href="/availablesupplies/">&#x2190; Back</a>
+        
+				<br>
+				<br>
+				<table class="table">
+					<tr>
+						<th><h5>Date Posted: <strong>{{donation.date}}
+						</strong></h5></th>
+						<th><h5>Donor:<strong style="padding-left: 5%;">{{donation.user}}</strong></h5></th>
+						<th>
+							<a style="float:right; margin:5px; color: white;" href="/donations/{{donation.pk}}/delete/" class="btn btn-success" onclick="showAlert()" >Accept</a>
+
+								
+						</th>
+					</tr>
+				</table>
+
+			</div>
+
+			<br>
+			<div class="box-element">
+				<div class="cart-row">
+					<div style="flex:2"></div>
+					<div style="flex:2"><strong>Item</strong></div>
+					<div style="flex:1"><strong>Category</strong></div>
+					<div style="flex:1"><strong>Quantity</strong></div>
+					
+				</div>
+				
+				<div class="cart-row">
+					<div style="flex:2;"><img class="row-image" src="{{donation.imageURL}}"></div>
+					<div style="flex:2"><p>{{donation.title}}</p></div>
+					<div style="flex:1"><p>{{donation.category}}</p></div>
+					<div style="flex:1">
+						<p class="quantity">{{donation.quantity}}</p>
+						<div class="quantity">
+							<img class="chg-quantity" src="">
+					
+							<img class="chg-quantity" src="">
+						</div>
+					</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div class="box-element">
+			<th><h5 style="padding-left:80%">Donation #<strong id="donationid">{{donation.pk}}</strong></h5></th>
+	</div>
+
+  
+
+<script>
+function showAlert() {
+
+swal({
+  title: "Accept Donation",
+  text: "Are you sure you would like to accept the donation titled {{donation.title}}, which was posted on {{donation.date}} by {{donation.user}}?",
+	
+  icon: "info",
+  buttons: true,
+  
+})
+.then((ok) => {
+  if (ok) {
+    swal("Donation successfully accepted, please contact {{donation.user}} at {{donation.phonenumber}}, for instructions as to when and where you should pick up the donation", {
+      icon: "success",
+		
+    }
+				
+		);
+  } 
+});
+}
+
+</script>
+	
+{% endblock content %}

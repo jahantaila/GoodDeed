@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>GoodDeed - Request</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="{% static 'donatestyles.css' %}">
+
+</head>
+<body>
+
+
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form" action="/request/" method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				<span style="font-family: Roboto; font-size: 40px; color: #3598dc; font-weight: bolder; margin-bottom: 3%;" class="contact100-form-title">
+					GoodDeed - Request
+				</span>
+
+				<label class="label-input100" for="requestitle">Request Title*</label>
+				<div class="wrap-input100 rs1 validate-input">
+					<input id="first-name" class="input100" type="text" name="requestitle" placeholder="What are you requesting?" required>
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 rs1 validate-input">
+					<input type = 'tel' class="input100" for="phone" name="phonenumber" placeholder="Phone Number" required>
+					<span class="focus-input100"></span>
+				</div>
+
+				<label class="label-input100" for="category">Request Type/Category*</label>
+				<div class="wrap-input100 validate-input">
+					<select id="text" class="input100" type="text" name="category">
+						<option value="Food">Food</option>
+						<option value="Clothing">Clothing</option>
+						<option value="Toilitries">Toilitries</option>
+						<option value="Other">Other</option>
+					</select>
+					<span class="focus-input100"></span>
+				</div>
+
+				<label class="label-input100" for="quantity">Quantity*</label>
+				<div class="wrap-input100">
+					<input id="phone" class="input100" type="number" name="quantity" placeholder="Quantity of your request" required>
+					<span class="focus-input100"></span>
+				</div>
+
+				<label class="label-input100" for="location">Location*</label>
+				<div class="wrap-input100">
+					<input id="location" class="input100" type="text" name="location" placeholder="Please enter the location for your request to be dropped off at" required>
+					<span class="focus-input100"></span>
+				</div>
+
+
+				
+				<label class="label-input100" for="image">Image*</label>
+				<div class="">
+					<input id="image" class="input100" type="file" name="image"  required>
+					<span class="focus-input100"></span>
+				</div>
+				
+
+
+
+				<label class="label-input100" for="description">Description*</label>
+				<div class="wrap-input100 validate-input" required>
+					<textarea style="resize: none;"  id="message" class="input100" name="description" placeholder="Please include details about the item you are requesting."  required  ></textarea>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="container-contact100-form-btn">
+					<button class="contact100-form-btn" type="submit">
+						<span>
+							Submit
+							<i class="zmdi zmdi-arrow-right m-l-8"></i>
+						</span>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+
+
+
+</body>
+</html>

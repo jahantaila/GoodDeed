@@ -1,0 +1,138 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoodDeed - Dashboard</title>
+  <link rel="stylesheet" href="{% static 'dashboardstyles.css' %}">
+  <link rel="stylesheet" href="{% static 'dashboardnavbar.css' %}">
+  
+  
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <!-- Our Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Font Awesome JS -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <style>
+            #messages{
+
+                padding: 20px;
+                background-color: #30bc84; 
+                color: white;
+                margin-bottom: 15px;
+    
+
+            }
+    </style>
+    <script>
+        setTimeout(function() {
+          let errors = document.getElementsByClassName('messages');
+          while(errors.length > 0) {
+            errors[0].parentNode.removeChild(errors[0]);
+          }
+        }, 3000);
+      </script>
+</head>
+<body>
+    {% for message in messages %}
+    <p  id="messages" class="messages">{{message}}</p>
+    {% endfor %}
+    
+    
+    
+        <!-- end row -->
+        <div class="frame" style="transform: scale(1.6);">
+         <div class="center">
+           
+             <div class="profile">
+                <div class="image">
+                   <div class="circle-1"></div>
+                   <div class="circle-2"></div>
+                   <img src="https://images-na.ssl-images-amazon.com/images/I/51e6kpkyuIL._AC_SL1200_.jpg" width="70" height="70" alt="Image">
+                </div>
+                
+                <div class="name">{{ user.get_full_name }}</div>
+                <div class="job"> {{ user.get_username }}</div>
+                
+                <div class="actions">
+                   <button class="btn"onclick="location.href = '/donate/'">Donate</button>
+                   <button class="btn" onclick="location.href = '/request/'">Request</button>
+                </div>
+             </div>
+             
+             <!--Add points and stuff later-->
+             <div class="stats">
+                <div class="box">
+                   <span class="value">{{points}}</span>  
+                   <span class="parameter">Points</span>
+                </div>
+                <div class="box">
+                   <span class="value">{{donations}}</span>
+                   <span class="parameter">Donations</span>
+                </div>
+                <div class="box">
+                   <span class="value">{{requests}}</span>
+                   <span class="parameter">Requests</span>
+                </div>
+             </div>
+         </div>
+       </div>
+
+      <!--Nav bar-->
+
+      <div class="wrapper">
+         <!-- Sidebar  -->
+         <nav id="sidebar" >
+             <div class="sidebar-header" style="background-color: #3598dc !important;">
+                 <h3>GoodDeed</h3>
+             </div>
+            
+             <ul class="list-unstyled components" style="background-color: #52a7e1 !important;">
+                 <p>Eradicating poverty and world hunger, one donation at a time</p>
+                 <li class="active" >
+                     <a href="/home/"  aria-expanded="false" class="dropdown-toggle">Home</a>
+                     <a href="{% url 'availablesupplies' %}"  aria-expanded="false" class="dropdown-toggle">Avalible Supplies</a>
+                     <a href="/viewrequests/"  aria-expanded="false" class="dropdown-toggle">View Requests </a>
+                     <a href="/about/"  aria-expanded="false" class="dropdown-toggle">About</a>
+                     <a href="/leaderboard/"  aria-expanded="false" class="dropdown-toggle">Leaderboards</a>
+                 <li>
+                  
+                  <p style="color: #52a7e1;">--------</p>
+             <ul class="list-unstyled CTAs">
+                 <li>
+                     <a href="{% url 'logout' %}" class="download">Logout</a>
+                 </li>
+                 <li>
+                     <a href="/contact/" class="article">Contact Us!</a>
+                 </li>
+             </ul>
+         </nav>
+ 
+         <!-- Page Content  -->
+         <div id="content"> 
+        <!--Dont touch above thing it glitches out-->
+             
+          
+   
+    
+    <!--News box-->
+    <div class="newsbox" >
+        <img src="https://www.freeiconspng.com/thumbs/news-icon/news-icon-33.jpg" alt="coins" id="coins"  />
+        <h2 style="line-height: 2; font-size: 30px;">News & Upcoming Events</h2>
+        <p class="whitespace">-------</p> 
+        <p style="line-height: 2;">No Current News </p>
+    </div>
+     </div>
+    
+
+     
+</body>
+</html>
+
+{% endblock %}
